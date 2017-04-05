@@ -1,0 +1,132 @@
+@keyframes translate{
+    0%{
+        top:-200px;
+    }
+    33%{
+        top:0px;
+    }66%{
+         top:-120px;
+     }100%{
+          top:-54px;
+      }
+}
+@keyframes sec3_animate{
+    0%{
+        transform:scale(0);
+        margin-top:-400px;
+    }
+    33%{
+        transform: scale(0.3);
+        margin-top:240px;
+    }
+    66%{
+        transform: scale(0.6);
+        margin-top:-180px;
+    }
+    100%{
+        transform: scale(1);
+        margin-top:0;
+    }
+}
+@keyframes sec3_scale{
+    0%{
+        transform:scale(0);
+    }100%{
+         transform:scale(1);
+     }
+}
+@keyframes sec4_scale{
+    0%{
+        margin-left:-414px;
+        transform:scale(0.3);
+    }50%{
+         margin-left:50px;
+     }
+    100%{
+        margin-left:0;
+        transform:scale(1.0);
+    }
+}
+@keyframes  sec4_Animate{
+    0%{
+        transform:scale(2);
+        margin-bottom:-240px;
+    }
+    100%{
+        transform: scale(1);
+        margin-top:0;
+    }
+}
+@keyframes translate2{
+    0%{
+        transform:translateX(-200px);
+    }100%{
+         transform:translateX(0);
+     }
+}
+@keyframes rotate{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+@keyframes parabola{
+    0% { transform: scale(1); }
+    50% { transform: scale(2); }
+    100% {  transform: scale(1); }
+}
+@keyframes scaleAnimate{
+    0%{
+        transform:scale(0.2);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+@keyframes beat{
+    0%{
+        transform:translateY(10px);
+    }
+    100%{
+        transform:translateY(-10px);
+    }
+}
+@keyframes sec5_animate1{
+    0%{
+        transform:translate(400px);
+    }100%{
+         transform:translate(0);
+     }
+}
+@keyframes sec5_animate2{
+    0%{
+        transform:translate(-400px);
+    }100%{
+         transform:translate(0);
+     }
+}
+@keyframes sec5_rotate{
+    0%{
+        transform:rotate(0deg)
+    }100%{
+         transform: rotate(45deg);
+     }
+}
+@keyframes toggle_right{
+    0%{
+        transform:translate(-414px);
+    }
+    100%{
+        transform:translate(0);
+    }
+}
+@keyframes toggle_left{
+    0%{
+        transform:translate(414px);
+    }
+    100%{
+        transform:translate(0);
+    }
+}

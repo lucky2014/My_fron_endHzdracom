@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=320,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<meta charset="utf-8"/>
+		<title>砸金蛋活动模板</title>
+		<link rel="stylesheet" href="css/smashing.css">
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.touchSwipe.js"></script>
+		<script src="js/smashing.js"></script>
+	</head>
+	<body>
+				<div class="box main_box">
+					<ul data-type="true" data-animate="false">
+						<li class="img1">
+							<img src="images/egg.png" alt="">
+						</li>
+						<li class="img2">
+							<img src="images/egg.png" alt="">
+						</li>
+						<li class="img3">
+							<img src="images/egg.png" alt="">
+						</li>
+						<li class="img4">
+							<img src="images/egg.png" alt="">
+						</li>
+					</ul>
+					<span class="hammer"><img src="images/hammer.png" alt=""></span>
+				</div>
+				<script>
+					var options = {
+						imgArr:["images/egg.png","images/eggBreak.png"],
+						callback:function(){
+							alert("蛋砸碎了")
+						}
+				    };
+					$(".main_box").smashing(options);
+				</script>
+	</body>
+</html>

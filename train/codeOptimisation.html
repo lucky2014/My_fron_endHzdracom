@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)file:///C:/Users/Administrator.LQ-20160307MDZP/AppData/Local/Temp/MarkdownPadPreview.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>从浏览器的渲染过程看优化</title>
+
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<!--<base href="file:\\\C:\Users\Administrator.LQ-20160307MDZP\Desktop\培训\优化\">--><base href=".">
+</head>
+<body>
+<h2>浏览器的渲染过程</h2>
+<ol>
+<li>
+<p>浏览器解析html源码，然后创建一个 DOM树(就是图片DOM树了)，术语上就是重排，英文叫layout，reflows，就是安排每个节点的位置。</p>
+<ul>
+<li>在DOM树中，每一个HTML标签都有一个对应的节点，并且每一个文本也都会有一个对应的文本节点。</li>
+<li>DOM树的根节点就是 documentElement，对应的是html标签。</li>
+</ul>
+</li>
+<li>
+<p>浏览器解析CSS代码，计算出最终的样式数据，术语上叫重绘，绘画的绘，英文叫repaints，render，paint跟颜色有关，你懂的！</p>
+<ul>
+<li>对CSS代码中非法的语法她会直接忽略掉。</li>
+<li>解析CSS的时候会按照如下顺序来定义优先级：浏览器默认设置，用户设置，外链样式，内联样式，html中的style。</li>
+</ul>
+</li>
+<li>
+<p>计算出样式数据后，下一步就是构建渲染树（rendering tree）。</p>
+<ul>
+<li>渲染树和DOM树有点像，但是是有区别的。DOM树完全和html标签一一对应，它只有浏览器默认的样式，如strong表现上是粗体，但是渲染树会忽略掉不需要渲染的元素，比如head、display:none的元素，会显示样式设置的大小、颜色等。</li>
+<li>一大段文本中的每一个行在渲染树中都是独立的一个节点。</li>
+<li>渲染树中的每一个节点都存储有对应的css属性。</li>
+</ul>
+</li>
+<li>
+<p>一旦渲染树创建好了，浏览器就可以根据渲染树直接把页面绘制到屏幕上。</p>
+</li>
+</ol>
+<h2>什么是重排（重新加载）、重绘</h2>
+<ul>
+<li>
+<p>重排，是最浪费时间的</p>
+<p>Reflow(重排)就是DOM的变化影响到了元素的几何属性（宽和高），浏览器会重新计算元素的几何属性，会使渲染树中受到影响的部分失效，浏览器会验证DOM树上的所有其它结点的visibility属性，这也是Reflow低效的原因。如：改变窗囗大小、改变文字大小、内容的改变、浏览器窗口变化，style属性的改变等等。如果Reflow的过于频繁，CPU使用率就会噌噌的往上涨，所以前端也就有必要知道 Repaint 和 Reflow的知识。</p>
+<p>举个例子：某个地方原来有一个P，经过JS加载后，P被删除了，或者P的width和height改变了。它的改变会引起其他节点的变动，删除后，它的位置会被其他节点代替，那么它后面的节点的位置都有变化，改变大小是一样的原理。</p>
+</li>
+<li>
+<p>重绘，也一样需要时间</p>
+<p>一个元素的外观被改变，但没有改变布局(宽高)的情况下发生。</p>
+</li>
+</ul>
+<h2>什么情况下回触发重排和重绘</h2>
+<ul>
+<li>增加或删除DOM节点</li>
+<li>设置 display: none;（重排并重绘） 或者 visibility: hidden（只有重排）</li>
+<li>移动页面中的元素</li>
+<li>增加或者修改样式</li>
+<li>用户 改变窗口大小，滚动页面等</li>
+</ul>
+<p>例子：</p>
+<pre><code>var bstyle = document.body.style; // cache
+
+bstyle.padding = "20px"; // reflow, repaint
+bstyle.border = "10px solid red"; // two reflow， a repaint
+
+bstyle.color = "blue"; // repaint only
+bstyle.backgroundColor = "#fad"; // repaint
+
+bstyle.fontSize = "2em"; // reflow, repaint
+
+//新增节点 - reflow, repaint
+document.body.appendChild(document.createTextNode('dude!'));
+
+js获取某个熟悉的width，因为浏览器要给你最新的值，所以获取的时候就进行了重排或重绘。
+</code></pre>
+
+<h2>重排、重绘与优化的关系</h2>
+<p>知道了浏览器渲染的原理，那些情况会发生重排或重绘，那么就可以控制他们，少进行这方面的操作，在优化页面渲染的速度。如何才能优化呢？</p>
+<ol>
+<li>
+<p>一个策略就是不要立即做操作，而是批量进行。比如把你的脚本对DOM的修改放入一个队列，在队列所有操作结束后只需要进行一次绘制即可。（图片定义对象）</p>
+<ul>
+<li>
+<p>bad（不好的习惯）</p>
+<ul>
+<li>var left = 10;</li>
+<li>top = 10; </li>
+<li>el.style.left = left + "px";</li>
+<li>el.style.top  = top  + "px";</li>
+</ul>
+</li>
+<li>
+<p>better （好的习惯）</p>
+<ul>
+<li>el.className += " theclassname";</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>不要频繁获取计算后的样式。如果你需要使用计算后的样式，最好暂存起来而不是直接从DOM上读取。</p>
+<p>应该这样： var o = $(obj);</p>
+</li>
+<li>
+<p>把对节点的大量修改操作放在页面之外</p>
+<ul>
+<li>用 documentFragment来做修改</li>
+<li>clone 节点，在clone之后的节点中做修改，然后直接替换掉以前的节点</li>
+<li>通过 display: none 来隐藏节点（直接导致一次重排和重绘），做大量的修改（第一点），然后显示节点（又一次重排和重绘），总共只会有两次重排。</li>
+</ul>
+</li>
+<li>
+<p>减少对DOM的操作（图片缓存变量）</p>
+<ul>
+<li>对DOM操作的代价是高昂的，这在网页应用中的通常是一个性能瓶颈。</li>
+<li>天生就慢。在《高性能JavaScript》中这么比喻：“把DOM看成一个岛屿，把JavaScript(ECMAScript)看成另一个岛屿，两者之间以一座收费桥连接”。所以每次访问DOM都会教一个过桥费，而访问的次数越多，交的费用也就越多。所以一般建议尽量减少过桥次数。</li>
+</ul>
+</li>
+<li>
+<p>高效使用HTML标签和CSS样式</p>
+<ul>
+<li>HTML是一门用来描述网页的一种语言，它使用标记标签来描述网页。每一个标签所代表的意义是不一样，都有各自的标准，所以写代码的时候，要尽量使用语义化的标签。</li>
+<li>
+<p>CSS是用来渲染页面的，也是存在渲染效率的问题。CSS选择符是从上到下进行匹配的（优先级），这里对css选择符按照开销从小到大的顺序梳理一下：</p>
+<ul>
+<li>ID选择符 #box</li>
+<li>类选择符 .box  
+</li>
+<li>标签 div</li>
+<li>伪类和伪元素 a:hover</li>
+</ul>
+</li>
+<li>
+<p>当页面被触发引起回流（reflow）的时候，低效的选择符依然会引发更高的开销，所以请避免低效。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>总的来说，总是考虑到渲染树的存在，考虑到你的一次修改会导致多大的绘制操作。比如绝对定位元素的动画就不会影响其他大部分元素。</p>
+</li>
+</ol>
+<h2>高效地使用JQuery</h2>
+<ol>
+<li>
+<p>使用最新版本的jQuery</p>
+<p>jQuery的版本更新很快，你应该总是使用最新的版本。因为新版本会改进性能，还有很多新功能。下面就来看看，不同版本的jQuery性能差异有多大。这里是三条最常见的jQuery选择语句：</p>
+<pre>$('.elem')
+$('.elem', context)
+context.find('.elem')</pre>
+<p>我们用1.4.2、1.4.4、1.6.2三个版本的jQuery测试，看看浏览器在1秒内能够执行多少次。可以看到，1.6.2版本的运行次数，远远超过两个老版本。尤其是第一条语句，性能有数倍的提高。</p>
+<p>其他语句的测试，比如.attr("value")和.val()，也是新版本的jQuery表现好于老版本。</p>
+</li>
+<li>
+<p>用对选择器</p>
+<p>在jquery中，你可以用多种选择器，选择同一个网页元素。每种选择器的性能是不一样的，你应该了解它们的性能差异。</p>
+<ul>
+<li>
+<p>最快的选择器：id选择器和元素标签选择器,举例来说，下面的语句性能最佳：</p>
+<pre>$('#id')
+$('form')
+$('input')</pre>
+<p>遇到这些选择器的时候，jQuery内部会自动调用浏览器的原生方法（比如getElementById()），所以它们的执行速度快。</p>
+</li>
+<li>
+<p>较慢的选择器：class选择器</p>
+<p>$('.className')的性能，取决于不同的浏览器。 Firefox、Safari、Chrome、Opera浏览器，都有原生方法getElementByClassName()，所以速度并不慢。但是，IE5-IE8都没有部署这个方法，所以这个选择器在IE中会相当慢。</p>
+</li>
+<li>
+<p>最慢的选择器：伪类选择器和属性选择器</p>
+<p>先来看例子。找出网页中所有的隐藏元素，就要用到伪类选择器：$(':hidden')，属性选择器的例子则是：$('[attribute=value]')。</p>
+<p>这两种语句是最慢的，因为浏览器没有针对它们的原生方法。但是，一些浏览器的新版本，增加了querySelector()和querySelectorAll()方法，因此会使这类选择器的性能有大幅提高。</p>
+<p>总之，性能来说，ID选择器遥遥领先，然后是标签选择器，第三是Class选择器，其他选择器都非常慢。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>理解子元素和父元素的关系</p>
+<p>下面六个选择器，都是从父元素中选择子元素。你知道哪个速度最快，哪个速度最慢吗？</p>
+<pre>$('.child', $parent)
+$parent.find('.child')
+$parent.children('.child')
+$('#parent &gt; .child')$('#parent .child')
+$('.child', $('#parent'))</pre>
+<p>我们一句句来看。</p>
+<ul>
+<li>
+<p>$('.child', $parent)：这条语句的意思是，给定一个DOM对象，然后从中选择一个子元素。jQuery会自动把这条语句转成$.parent.find('child')，这会导致一定的性能损失。它比最快的形式慢了5%-10%。</p>
+</li>
+<li>
+<p>$parent.find('.child')：这条是最快的语句。.find()方法会调用浏览器的原生方法（getElementById，getElementByName，getElementByTagName等等），所以速度较快。</p>
+</li>
+<li>
+<p>$parent.children('.child')：这条语句在jQuery内部，会使用$.sibling()和javascript的nextSibling()方法，一个个遍历节点。它比最快的形式大约慢50%。</p>
+</li>
+<li>
+<p>$('#parent &gt; .child')：jQuery内部使用Sizzle引擎，处理各种选择器。Sizzle引擎的选择顺序是从右到左，所以这条语句是先选.child，然后再一个个过滤出父元素#parent，这导致它比最快的形式大约慢70%。</p>
+</li>
+<li>
+<p>$('#parent .child')：这条语句与上一条是同样的情况。但是，上一条只选择直接的子元素，这一条可以于选择多级子元素，所以它的速度更慢，大概比最快的形式慢了77%。</p>
+</li>
+<li>
+<p>$('.child', $('#parent'))：jQuery内部会将这条语句转成$('#parent').find('.child')，比最快的形式慢了23%。</p>
+</li>
+</ul>
+<p>所以，最佳选择是$parent.find('.child')。而且，由于$parent往往在前面的操作已经生成，jQuery会进行缓存，所以进一步加快了执行速度。</p>
+</li>
+<li>
+<p>不要过度使用jquery</p>
+<p>jQuery速度再快，也无法与原生的javascript方法相比。所以有原生方法可以使用的场合，尽量避免使用jQuery。</p>
+<p>请看下面的例子，为a元素绑定一个处理点击事件的函数：</p>
+<pre>$('a').click(function(){
+    alert($(this).attr('id'));
+});</pre>
+<p>这段代码的意思是，点击a元素后，弹出该元素的id属性。为了获取这个属性，必须连续两次调用jQuery，第一次是$(this)，第二次是attr('id')。 事实上，这种处理完全不必要。更正确的写法是，直接采用javascript原生方法，调用this.id：</p>
+<pre>$('a').click(function(){
+    alert(this.id);
+});</pre>
+<p>根据测试，this.id的速度比$(this).attr('id')快了20多倍</p>
+</li>
+<li>
+<p>做好缓存</p>
+<p>选中某一个网页元素，是开销很大的步骤。所以，使用选择器的次数应该越少越好，并且尽可能缓存选中的结果，便于以后反复使用。</p>
+<p>比如，下面这样的写法就是糟糕的写法：</p>
+<pre>jQuery('#top').find('p.classA');
+jQuery('#top').find('p.classB');</pre>
+<p>更好的写法是：</p>
+<pre>var cached = jQuery('#top');
+cached.find('p.classA');
+cached.find('p.classB');</pre>
+<p>根据测试，缓存比不缓存，快了2-3倍。</p>
+</li>
+<li>
+<p>使用链式写法</p>
+<p>jQuery的一大特点，就是允许使用链式写法。</p>
+<pre>$('div').find('h3').eq(2).html('Hello');</pre>
+<p>采用链式写法时，jQuery自动缓存每一步的结果，因此比非链式写法要快。根据测试，链式写法比（不使用缓存的）非链式写法，大约快了25%。</p>
+</li>
+<li>
+<p>事件的委托处理（EventDelegation）</p>
+<p>javascript的事件模型，采用"冒泡"模式，也就是说，子元素的事件会逐级向上"冒泡"，成为父元素的事件。 利用这一点，可以大大简化事件的绑定。比如，有一个表格（table元素），里面有100个格子（td元素），现在要求在每个格子上面绑定一个点击事件（click），请问是否需要将下面的命令执行100次？</p>
+<pre>$("td").bind("click", function(){
+    $(this).toggleClass("click");
+});</pre>
+<p>回答是不需要，我们只要把这个事件绑定在table元素上面就可以了，因为td元素发生点击事件之后，这个事件会"冒泡"到父元素table上面，从而被监听到。因此，这个事件只需要在父元素绑定1次即可，而不需要在子元素上绑定100次，从而大大提高性能。这就叫事件的"委托处理"，也就是子元素"委托"父元素处理这个事件。</p>
+<p>具体的写法有两种。第一种是采用.delegate()方法：</p>
+<pre>$("table").delegate("td","click", function(){
+    $(this).toggleClass("click");
+});</pre>
+<p>第二种是采用.live()方法：</p>
+<pre>$("table").each(function(){
+    $("td", this).live("click",function(){
+        $(this).toggleClass("click");
+    });
+});</pre>
+<p>这两种写法基本等价。唯一的区别在于，.delegate()是当事件冒泡到指定的父元素时触发，.live()则是当事件冒泡到文档的根元素后触 发，因此.delegate()比.live()稍快一点。此外，这两种方法相比传统的.bind()方法还有一个好处，那就是对动态插入的元素也有效，.bind()只对已经存在的DOM元素有效，对动态插入的元素无效。</p>
+<p>根据测试，委托处理比不委托处理，快了几十倍。在委托处理的情况下，.delegate()又比.live()大约快26%。</p>
+</li>
+<li>
+<p>少改动DOM结构</p>
+<p>改动DOM结构开销很大，因此不要频繁使用.append()、.insertBefore()和.insetAfter()这样的方法。如果要插入多个元素，就先把它们合并，然后再一次性插入。根据测试，合并插入比不合并插入，快了将近10倍。</p>
+<p>如果你要对一个DOM元素进行大量处理，应该先用.detach()方法，把这个元素从DOM中取出来，处理完毕以后，再重新插回文档。根据测试，使用.detach()方法比不使用时，快了60%。</p>
+<p>如果你要在DOM元素上储存数据，不要写成下面这样：</p>
+<pre>var elem = $('#elem');
+elem.data(key,value);</pre>
+<p>而要写成：</p>
+<pre>var elem = $('#elem');
+$.data(elem,key,value);</pre>
+<p>根据测试， 后一种写法要比前一种写法，快了将近10倍。因为elem.data()方法是定义在jQuery函数的prototype对象上面的， 而$.data()方法是定义jQuery函数上面的，调用的时候不从复杂的jQuery对象上调用，所以速度快得多。</p>
+</li>
+<li>
+<p>正确处理循环</p>
+<p>循环总是一种比较耗时的操作，如果可以使用复杂的选择器直接选中元素，就不要使用循环，去一个个辨认元素。</p>
+<p>javascript原生循环方法for和while，要比jQuery的.each()方法快，应该优先使用原生方法。</p>
+</li>
+<li>
+<p>尽量少生成jquery对象</p>
+<p>每当你使用一次选择器（比如$('#id')），就会生成一个jQuery对象。jQuery对象是一个很庞大的对象，带有很多属性和方法，会占用不少资源。所以，尽量少生成jQuery对象。</p>
+<p>举例来说，许多jQuery方法都有两个版本，一个是供jQuery对象使用的版本，另一个是供jQuery函数使用的版本。下面两个例子，都是取出一个元素的文本，使用的都是text()方法。你既可以使用针对jquery对象的版本：</p>
+<pre>var $text = $("#text");
+var $ts = $text.text();</pre>
+<p>也可以使用针对jQuery函数的版本：</p>
+<pre>var $text = $("#text");
+var $ts = $.text($text);</pre>
+<p>由于后一种针对jquery函数的版本不通过jQuery对象操作，所以相对开销较小，速度比较快。</p>
+</li>
+</ol>
+
+
+
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
+</body></html>

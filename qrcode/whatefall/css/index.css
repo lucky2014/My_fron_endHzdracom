@@ -1,0 +1,6 @@
+body,html{ margin: 0; padding: 0;}
+ul,li{ margin:0; padding: 0; list-style: none;}
+
+#waterfall{ width: 785px; margin: 20px auto; height: auto;}
+#waterfall ul{float: left; display: inline; margin:5px; width: 225px;}
+#waterfall li img{ width: 225px;}

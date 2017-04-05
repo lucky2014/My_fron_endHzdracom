@@ -1,0 +1,20 @@
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <link href="css/css.css" rel="stylesheet">
+</head>
+
+<body>
+<div ng-controller="Ctrl"><button ng-click="$storage.counter = $storage.counter - 1">{{$storage.counter}}</button></div>
+<script src="lib/jquery/1.11.0/jquery.js"></script>
+<script src="lib/angular/1.2.0/angular.js"></script>
+<script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+<script>
+angular.module('app', ['ngStorage']).controller('Ctrl', function($scope, $localStorage, $sessionStorage
+){
+  $scope.$storage = $localStorage;
+  console.log($localStorage);
+});
+</script>
+</body>
+</html>

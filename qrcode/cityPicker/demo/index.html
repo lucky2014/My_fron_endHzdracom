@@ -1,0 +1,39 @@
+<!doctype HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>前端开发-杭州龙骞科技前端部门</title>
+	<script src="../js/jquery/jquery-1.8.3.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/cityPicker.css" />
+</head>
+<body style="margin:0; padding:0;">
+	<!--城市选择插件-->
+	<div id="cityPicker">
+		<div>
+            <p><i data-num="">请选择省份</i><em class="arrow"></em></p>
+            <ul class="hide">
+            </ul>
+        </div>
+        <div>
+            <p><i data-num="">请选择城市</i><em class="arrow"></em></p>
+            <ul class="hide">
+            </ul>
+        </div>
+        <div>
+            <p><i data-num="">请选择县</i><em class="arrow"></em></p>
+            <ul class="hide">
+            </ul>
+        </div>
+    </div>
+
+<script src="js/cityPicker.js"></script>
+<script>
+$(function(){
+    $("#cityPicker").cityPicker({
+        url: "http://122.224.218.55:8121/liujia-enterprise-server/activity/getAreaInfo.do",
+        hasCountry: true
+    });
+});
+</script>
+</body>
+</html>

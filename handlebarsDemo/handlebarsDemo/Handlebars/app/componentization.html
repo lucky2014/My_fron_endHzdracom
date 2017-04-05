@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
+	<link rel="stylesheet" type="text/css" href="component/Boxes/index.css">
+	 -->
+	<script type="text/javascript"  src="bower_components/seajs/dist/sea.js"></script>
+	<script type="text/javascript" src="bower_components/seajs-text/seajs-text-1.1.1/dist/seajs-text.js"></script>
+
+	
+
+</head>
+
+<body>
+	
+ <script type="text/javascript">
+	
+	//basePath由服务端配置域名
+	var basePath = "http://localhost:8080/app/";
+
+ 	// seajs 的简单配置
+ 	seajs.config({
+ 	  base: basePath,
+ 	  alias: {
+ 	    "jquery": "bower_components/jquery/jquery.seejs.min.js",
+ 	    "handlebars":"bower_components/handlebars/handlebars.seajs.min.js", 
+ 	    "boxes":"component/Boxes/index.js"
+ 	  }
+ 	});
+
+ 	// 加载入口模块
+ 	seajs.use("./scripts/componentization.js");
+ 	// seajs.use("./scripts/main1.js");
+
+ </script>
+
+
+
+</body>
+</html>

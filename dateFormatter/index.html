@@ -1,0 +1,38 @@
+<!doctype HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=320,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../sweetAlert/css/example.css">
+		<title>将后台返回的日期字符串转化为标准日期格式</title>
+	</head>
+	<body>
+		<a href="../index.html" class="back">返回</a>
+		<h3>效果图</h3>
+		<div class="examples" style="text-align:center;"><img src="img/1.png" /></div>
+
+		<h3>代码(可以用查看源文件里找)</h3>
+<pre>
+formatDateFn: function(t, long) { //时间格式化，long参数是判断是否显示长日期（显示时间）格式
+  var _this = this;
+  t = new Date(t);
+  var year = t.getFullYear();
+  var month = _this.formatNumFn(t.getMonth() + 1);
+  var date = _this.formatNumFn(t.getDate());
+  var hour = _this.formatNumFn(t.getHours());
+  var minute = _this.formatNumFn(t.getMinutes());
+  var second = _this.formatNumFn(t.getSeconds());
+  if (long == 'long') {
+    return year + "-" + month + "-" + date + "   " + hour + ":" + minute + ":" + second;
+  } else {
+    return year + "-" + month + "-" + date;
+  }
+}
+</pre>
+
+	<h3></h3>
+	</body>
+</html>

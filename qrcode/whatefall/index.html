@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>瀑布流测试</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+<pre>注意事项：遇到的问题：如果图片一次性加载很多，就有加载快慢的问题出现。解决的办法是让图片加载完成后再瀑布流摆放。先 imgArr.push(v.headImg);在一个个图片的循环  var curImg =new Image();curImg.src=imgArr[i]; curImg.onload=function()</pre>
+<br /><br /><br />
+<div id="waterfall">
+	<ul>
+		<li><img src="imgs/1.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/2.jpg"><p>11</p></li>
+		<li><img src="imgs/3.jpg"><p>5放到</p></li>
+	</ul>
+	<ul>
+		<li><img src="imgs/4.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/5.jpg"><p>11</p></li>
+		<li><img src="imgs/6.jpg"><p>5放到</p></li>
+	</ul>
+	<ul>
+		<li><img src="imgs/7.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/8.jpg"><p>11</p></li>
+		<li><img src="imgs/9.jpg"><p>5放到</p></li>
+	</ul>
+</div>
+</body>
+</html>

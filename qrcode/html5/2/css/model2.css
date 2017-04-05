@@ -1,0 +1,88 @@
+.sec3{
+    background: url(../images/bg.png) no-repeat;
+    height:100%;
+    background-size: cover;
+}
+body{
+    max-width:643px;
+    margin:0 auto;
+    overflow:hidden;
+}
+*{
+    padding:0;
+    margin:0;
+    font-size:1rem;
+    list-style: none;
+    font-family: 'Open Sans', sans-serif;
+}
+.box3{
+    width:100%;
+    margin:0 auto;
+    height: 70%;
+    position: relative;
+    top:8%;
+    visibility: hidden;
+    overflow:hidden;
+    background: url(../images/back.png) no-repeat;
+    background-size: 100% 100%;
+}
+.box3>p{
+    height:16px;
+    position: relative;
+    top:5%;
+}
+.box3>p>img{
+    width:64px;
+    visibility: hidden;
+    position: absolute;
+}
+.box3>p>img.rain1{
+    width:64px;
+    right:2%;
+    top:50%;
+    margin-top:-6px;
+}
+.text{
+    margin-top:64px;
+    position: relative;
+    height:73%;
+}
+.text h4{
+    font-size: 2rem;
+    margin-top: 16%;
+    font-weight: normal;
+    color:#fff;
+    text-align: center;
+    position: relative;
+    visibility: hidden;
+}
+.text>img.rain2{
+    width:64px;
+    visibility: hidden;
+    left:0%;
+    margin-top:-6px;
+    position: absolute;
+    top:6%;
+}
+.text p{
+    visibility: hidden;
+    color:#fff;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.6rem;
+}
+.text>img.sound{
+    width:263px;
+    position: absolute;
+    right:8%;
+    bottom:10%;
+    visibility: hidden;
+}
+.zxc{
+    width:40%;
+    margin-top:10%;
+    margin-left:28%;
+    z-index: 999;
+    visibility: hidden;
+    position: relative;
+}

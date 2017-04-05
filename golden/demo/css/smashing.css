@@ -1,0 +1,155 @@
+body{
+	position: relative;
+	max-width:768px;
+	margin:0 auto;
+	margin-top:100px;
+}
+ul,li{
+	list-style: none;
+}
+.box{
+	position: absolute;
+	top:36px;
+	width:100%;
+	height:100%;
+}
+.box img{
+	width:100%;	
+}
+.box>img{
+	width:92%;
+	margin-left:4%;
+}
+.box ul{
+	position: absolute;
+	top:0;
+	width:320px;
+	height:100%;
+	left:50%;
+	margin-left:-160px;
+}
+.box ul li{
+	width:80px;
+	transition:all 1s ease;
+	position:absolute;
+}
+.box ul li.img1{
+	transform: translate(120px,-80px);
+	-webkit-transform: translate(120px,-80px);
+}
+.box ul li.img2{
+	transform: translate(10px,-30px);
+	-webkit-transform: translate(10px,-30px);
+}
+.box ul li.img3{
+	transform: translate(120px,40px) scale(1.8);
+	-webkit-transform: translate(120px,40px) scale(1.8);
+	z-index:300;
+}
+.box ul li.img4{
+	transform: translate(230px,-30px);
+	-webkit-transform: translate(230px,-30px);
+}
+.box1{
+	position: absolute;
+	top:0;
+}
+.hammer{
+	transform-origin:100% 100%;
+	display: inline-block;
+	width:90px;
+	position: absolute;
+	left:50%;
+	transform: rotate(14deg);
+	-webkit-transform: rotate(14deg);
+	margin-left:7%;
+	top:-20px;
+	z-index:300;
+}
+@media screen and (max-width:480px){
+	.hammer{
+		left:55%;
+	}
+}
+@media screen and (max-width:380px){
+	.hammer{
+		left:56%;
+	}
+}
+@media screen and (max-width:340px){
+	.hammer{
+		left:58%;
+	}
+}
+.hammer_hover{
+	-webkit-animation:hammer .4s infinite alternate  ease;
+	-moz-animation:hammer .4s infinite alternate  ease;
+	-ms-animation:hammer .4s infinite alternate  ease;
+	-o-animation:hammer .4s infinite alternate  ease;
+	animation:hammer .4s infinite alternate  ease;
+	-webkit-animation-iteration-count:1;
+	-moz-animation-iteration-count:1;
+	-ms-animation-iteration-count:1;
+	-o-animation-iteration-count:1;
+	animation-iteration-count:1;
+}
+.breaking{
+	-webkit-animation:breaking .4s infinite alternate  ease;
+	-moz-animation:breaking .4s infinite alternate  ease;
+	-ms-animation:breaking .4s infinite alternate  ease;
+	-o-animation:breaking .4s infinite alternate  ease;
+	animation:breaking .4s infinite alternate  ease;
+	-webkit-animation-iteration-count:1;
+	-moz-animation-iteration-count:1;
+	-ms-animation-iteration-count:1;
+	-o-animation-iteration-count:1;
+	animation-iteration-count:1;
+}
+.shake{
+	transform-origin:50% 100%;
+	-webkit-animation:shake .1s infinite alternate  ease;
+	-moz-animation:shake .1s infinite alternate  ease;
+	-ms-animation:shake .1s infinite alternate  ease;
+	-o-animation:shake .1s infinite alternate  ease;
+	animation:shake .1s infinite alternate  ease;
+	-webkit-animation-iteration-count:3;
+	-moz-animation-iteration-count:3;
+	-ms-animation-iteration-count:3;
+	-o-animation-iteration-count:3;
+	animation-iteration-count:3;
+}
+@-webkit-keyframes hammer{
+    0%{
+        transform:rotate(90deg)
+    }
+    100%{
+       	transform: rotate(14deg);
+    }
+}
+
+@-webkit-keyframes gift{
+    0%{
+        transform:translate(24px,-60px) scale(0)
+    }
+    100%{
+       	transform:translate(60px,-90px) scale(4);
+    }
+}
+@-webkit-keyframes shake{
+    0%{
+        transform:rotate(-1deg)
+    }
+    100%{
+        transform:rotate(1deg)
+    }
+}
+@-webkit-keyframes breaking{
+    0%{
+    	opacity: 0;
+        transform:translateY(60px) scale(0);
+    }
+    100%{
+    	opacity: 1;
+        transform:translateY(0) scale(1);
+    }
+}

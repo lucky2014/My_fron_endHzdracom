@@ -1,0 +1,2 @@
+遇到的问题：如果图片一次性加载很多，就有加载快慢的问题出现。解决的办法是让图片加载完成后再瀑布流摆放。
+先 imgArr.push(v.headImg);在一个个图片的循环  var curImg =new Image();curImg.src=imgArr[i]; curImg.onload=function()

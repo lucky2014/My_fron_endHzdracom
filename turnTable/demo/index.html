@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery九宫格大转盘抽奖代码 - 【科e互联】</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body class="keBody">
+<h1 class="keTitle">jQuery九宫格大转盘抽奖代码</h1>
+<div class="kePublic">
+<div id="lottery">
+	<ul>
+		<li class="lottery-unit lottery-unit-0" id="prize0"> 
+			<span class="box">
+				
+			</span>
+		</li>
+		<li class="lottery-unit lottery-unit-1" id="prize4">
+			<span class="box">
+				
+			</span>
+		</li>
+		<li class="lottery-unit lottery-unit-2" id="prize2">
+			<span class="box">
+				
+			</span>
+		</li>
+		<li class="lottery-unit lottery-unit-7" id="prize7">
+			<span class="box">
+				
+			</span>
+		</li>
+		<li>
+			<img src="images/chou.png" alt="" id="beginButton">
+		</li>
+		<li class="lottery-unit lottery-unit-3" id="prize5">
+			<span class="box">
+				
+			</span>
+		</li>
+		<li class="lottery-unit lottery-unit-6" id="prize3">
+			<span class="box">
+				
+			</span>
+		</li>
+		<li class="lottery-unit lottery-unit-5" id="prize6">
+			<span class="box">
+				
+			</span>
+		</li>
+		<li class="lottery-unit lottery-unit-4" id="prize1">
+			<span class="box">
+				
+			</span>
+		</li>
+	</ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/turnTable.js"></script>
+<script>
+	$("#lottery").turnTable({
+		prizeName : ["100M流量","200M流量","iphone","打我呀","打我也不给"],   //奖品名称 不满8个其他为谢谢参与
+        index : 0,															  //起始位置
+        prize : 6,				                                              //停下的位置
+        cycle:50,															  //转动基本次数：即至少需要转动多少次再停下
+        isRandom:true,														  //是否随机放值奖品
+        callBack:function(){												  //停下后的回调函数
+        	alert("中奖啦")
+        }
+	});
+</script>
+</body>
+</html>	

@@ -1,0 +1,40 @@
+<!doctype HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=320,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../sweetAlert/css/example.css">
+		<title>将URL网址转为二维码显示在页面上</title>
+	</head>
+	<body>
+		<a href="../index.html" class="back">返回</a>
+		<h3>效果图</h3>
+		<div class="examples" style="text-align:center;"><img src="1.png" /></div>
+
+		<h3>代码</h3>
+		<ul class="examples">
+
+			<li class="message">
+			<div class="ui">
+				<button>使用</button>
+			</div>
+<pre>
+1、引用JS库后使用下面代码
+$(".qrcode").html("");
+	//查看示例按钮
+	$(".qrcode").qrcode({
+	render: "canvas",
+	width: 166,
+	height: 166,
+	text: url
+});
+</pre>
+			</li>
+		</ul>
+
+		<h3></h3>
+	</body>
+</html>

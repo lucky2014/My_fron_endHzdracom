@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>弹框插件</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <link rel="stylesheet" href="css/example.css">
+
+  <script src="../js/jquery/jquery-1.8.3.min.js"></script>
+  <script src="js/sweet-alert.js"></script>
+  <link rel="stylesheet" href="css/sweet-alert.css">
+
+</head>
+
+<body>
+<a href="../index.html" class="back">返回</a>
+<h3>例子</h3>
+
+<ul class="examples">
+
+	<li class="message">
+		<div class="ui">
+			<p>基本用法</p>
+			<button>Try me!</button>
+		</div>
+		<pre>swal(<span class="str">"Here's a message!"</span>)</pre>
+	</li>
+
+	<li class="title-text">
+		<div class="ui">
+			<p>有大标题小标题</p>
+			<button>Try me!</button>
+		</div>
+		<pre>swal(<span class="str">"Here's a message!"</span>, <span class="str">"It's pretty, isn't it?"</span>)</pre>
+	</li>
+
+	<li class="success">
+		<div class="ui">
+			<p>有成功图标</p>
+			<button>Try me!</button>
+		</div>
+		<pre>swal(<span class="str">"Good job!"</span>, <span class="str">"You clicked the button!"</span>, <span class="str">"success"</span>)</pre>
+	</li>
+
+	<li class="timer">
+		<div class="ui">
+			<p>几秒后自动消失</p>
+			<button>Try me!</button>
+		</div>
+		<pre>swal({
+&nbsp;&nbsp;title: <span class="str">"Auto close alert!"</span>,
+&nbsp;&nbsp;text: <span class="str">"I will close in 2 seconds."</span>,
+&nbsp;&nbsp;timer: <span class="str">2000</span>
+});</pre>
+	</li>
+
+	<li class="warning confirm">
+		<div class="ui">
+			<p>警告框，确定删除吗？</p>
+			<button>Try me!</button>
+		</div>
+		<pre>swal({
+&nbsp;&nbsp;title: <span class="str">"Are you sure?"</span>,
+&nbsp;&nbsp;text: <span class="str">"You will not be able to recover this imaginary file!"</span>,
+&nbsp;&nbsp;type: <span class="str">"warning"</span>,
+&nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
+&nbsp;&nbsp;confirmButtonColor: <span class="str">"#DD6B55"</span>,
+&nbsp;&nbsp;confirmButtonText: <span class="str">"Yes, delete it!"</span>,
+&nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>(){
+&nbsp;&nbsp;<span class="func">swal</span>(<span class="str">"Deleted!"</span>, <span class="str">"Your imaginary file has been deleted."</span>, <span class="str">"success"</span>);
+});</pre>
+	</li>
+
+	<li class="warning cancel">
+		<div class="ui">
+			<p>复杂化的警告框</p>
+			<button>Try me!</button>
+		</div>
+		<pre>swal({
+&nbsp;&nbsp;title: <span class="str">"Are you sure?"</span>,
+&nbsp;&nbsp;text: <span class="str">"You will not be able to recover this imaginary file!"</span>,
+&nbsp;&nbsp;type: <span class="str">"warning"</span>,
+&nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
+&nbsp;&nbsp;confirmButtonColor: <span class="str">"#DD6B55"</span>,
+&nbsp;&nbsp;confirmButtonText: <span class="str">"Yes, delete it!"</span>,
+&nbsp;&nbsp;cancelButtonText: <span class="str">"No, cancel plx!"</span>,
+&nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>,
+&nbsp;&nbsp;closeOnCancel: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>(isConfirm){
+&nbsp;&nbsp;<span class="tag">if</span> (isConfirm) {
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(<span class="str">"Deleted!"</span>, <span class="str">"Your imaginary file has been deleted."</span>, <span class="str">"success"</span>);
+&nbsp;&nbsp;} <span class="tag">else</span> {
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(<span class="str">"Cancelled"</span>, <span class="str">"Your imaginary file is safe :)"</span>, <span class="str">"error"</span>);
+&nbsp;&nbsp;}
+});</pre>
+	</li>
+
+	<li class="custom-icon">
+		<div class="ui">
+			<p>自定义图标</p>
+			<button>Try me!</button>
+		</div>
+		<pre>swal({
+&nbsp;&nbsp;title: <span class="str">"Sweet!"</span>,
+&nbsp;&nbsp;text: <span class="str">"Here's a custom image."</span>,
+&nbsp;&nbsp;imageUrl: <span class="str">"images/thumbs-up.jpg"</span>
+});</pre>
+	</li>
+
+</ul>
+
+
+
+
+
+<script>
+$(function(){
+	$('ul.examples li.message button').click(function(){
+		swal("这是测试哦！");
+	});
+
+	$('ul.examples li.timer button').click(function(){
+		swal({
+			title: "Auto close alert!",
+			text: "I will close in 2 seconds.",
+			timer: 2000
+		});
+	});
+
+	$('ul.examples li.title-text button').click(function(){
+		swal("Here's a message!", "It's pretty, isn't it?")
+	});
+
+	$('ul.examples li.success button').click(function(){
+		swal("Good job!", "You clicked the button!", "success");
+	});
+
+	$('ul.examples li.warning.confirm button').click(function(){
+		swal({
+			title: "Are you sure?",
+			text: "You will not be able to recover this imaginary file!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#DD6B55',
+			confirmButtonText: 'Yes, delete it!',
+			closeOnConfirm: false,
+			//closeOnCancel: false
+		},
+		function(){
+			//document.querySelector('ul.examples li.warning.confirm').setAttribute("index",1);
+			//执行删除的代码在这里
+			swal("Deleted!", "Your imaginary file has been deleted!", "success");
+		});
+	});
+
+	$('ul.examples li.warning.cancel button').click(function(){
+		swal({
+			title: "Are you sure?",
+			text: "You will not be able to recover this imaginary file!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#DD6B55',
+			confirmButtonText: 'Yes, delete it!',
+			cancelButtonText: "No, cancel plx!",
+			closeOnConfirm: false,
+			closeOnCancel: false
+		},
+		function(isConfirm){
+	    if (isConfirm){
+	      swal("Deleted!", "Your imaginary file has been deleted!", "success");
+	    } else {
+	      swal("Cancelled", "Your imaginary file is safe :)", "error");
+	    }
+		});
+	});
+
+	$('ul.examples li.custom-icon button').click(function(){
+		swal({
+			title: "Sweet!",
+			text: "Here's a custom image.",
+			imageUrl: 'images/thumbs-up.jpg'
+		});
+	});
+});
+</script>
+
+<h3>参数说明</h3>
+<table class="table_parameters" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr class="tr_head">
+            <td width="25%">参数</td>
+            <td>描述</td>
+            <td width="10%">默认值</td>
+        </tr>
+        <tr>
+            <td align="center">title</td>
+            <td>提示框标题</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">text</td>
+            <td>提示内容</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">type</td>
+            <td>提示类型，有：success（成功），error（错误），warning（警告），input（输入）。</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">showCancelButton</td>
+            <td>是否显示“取消”按钮。</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">animation</td>
+            <td>提示框弹出时的动画效果，如slide-from-top（从顶部滑下）等</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">html</td>
+            <td>是否支持html内容。</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">timer</td>
+            <td>设置自动关闭提示框时间（毫秒）。</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">showConfirmButton</td>
+            <td>是否显示确定按钮。</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">confirmButtonText</td>
+            <td>定义确定按钮文本内容。</td>
+            <td align="center">-</td>
+        </tr>                            <tr>
+            <td align="center">imageUrl</td>
+            <td>定义弹出框中的图片地址。</td>
+            <td align="center">-</td>
+        </tr>                    
+    </tbody>
+</table>
+
+<h3>下载</h3>
+<a href="http://122.224.96.245/index/sweetAlert/sweetAlert.rar"></a>
+<h3></h3>
+</body>
+
+</html>

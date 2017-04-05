@@ -1,0 +1,13 @@
+ul,li,p,dl,dt,dd,img,h2,a{ margin: 0; padding: 0; list-style: none; font-family: 'microsoft yahei'; font-size: 14px;}
+a{ display: block; cursor: pointer;
+margin-left: 10px;}
+h2{ border-bottom: 1px solid #f0f0f0; 
+	height: 40px; line-height: 40px; font-family: 'microsoft yahei'; font-size: 14px; margin: 20px 0;
+	    border-top: 1px solid #f0f0f0;
+    background: #f2f2f2;
+    padding-left: 10px;
+}
+body,html{ width: 1000px; margin: 0 auto; font-family: 'microsoft yahei'}
+
+pre{ background: #f4f4f4; padding: 10px; font-family: 'microsoft yahei'}
+

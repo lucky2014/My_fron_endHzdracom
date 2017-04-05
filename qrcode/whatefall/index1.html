@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>瀑布流测试</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<style>
+body,html{ margin:0; padding: 0;}
+li,ul{ margin: 0; padding: 0; list-style: none;}
+#waterfall{ position: relative; width: 786px;}
+#waterfall img{ width: 250px;}	
+#waterfall li{ width: 250px; border: 1px solid #f60; position: absolute;}
+</style>
+</head>
+<body>
+<div id="waterfall">
+	<ul>
+		<li><img src="imgs/1.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/2.jpg"><p>11</p></li>
+		<li><img src="imgs/3.jpg"><p>5放到</p></li>
+		<li><img src="imgs/4.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/5.jpg"><p>11</p></li>
+		<li><img src="imgs/6.jpg"><p>5放到</p></li>
+		<li><img src="imgs/7.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/8.jpg"><p>11</p></li>
+		<li><img src="imgs/9.jpg"><p>5放到</p></li>
+		<li><img src="imgs/10.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/11.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/12.jpg"><p>11</p></li>
+		<li><img src="imgs/13.jpg"><p>5放到</p></li>
+		<li><img src="imgs/14.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/15.jpg"><p>11</p></li>
+		<li><img src="imgs/16.jpg"><p>5放到</p></li>
+		<li><img src="imgs/17.jpg"><p>爱好的骄傲</p></li>
+		<li><img src="imgs/18.jpg"><p>11</p></li>
+		<li><img src="imgs/19.jpg"><p>5放到</p></li>
+	</ul>
+</div>
+<script>
+window.onload = function(){
+	var aLi = document.getElementsByTagName("li");
+	var aHeight = {l:[],c:[],r:[]};
+
+	for (var i = 0; i < aLi.length; i++) {
+		var iNow = i%3;
+
+		function step(i,obj){
+			var step = Math.floor(i/3);
+			if(!step){
+				aLi[i].style.top = 0;
+			}else{
+				var sum = 0;
+				for(var j=0;j<step;j++){
+					sum += obj[j] + 10;
+				}
+				aLi[i].style.top = sum + "px";
+			}
+		}
+
+		switch(iNow){
+			case 0:
+				aLi[i].style.left = "10px";
+				aHeight.l.push(aLi[i].offsetHeight);
+				step(i,aHeight.l);
+			break;
+			case 1:
+				aLi[i].style.left = "272px";
+				aHeight.c.push(aLi[i].offsetHeight);
+				step(i,aHeight.c);
+			break;
+			case 2:
+				aLi[i].style.left = "534px";
+				aHeight.r.push(aLi[i].offsetHeight);
+				step(i,aHeight.r);
+			break;
+		}
+	};
+};	
+</script>
+</body>
+</html>

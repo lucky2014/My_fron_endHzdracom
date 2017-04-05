@@ -1,0 +1,401 @@
+ul{
+    position: fixed;
+    bottom:5%;
+}
+@keyframes box1_lf{
+    0%{
+        opacity:0;
+        transform:rotate(-90deg);
+    }
+    100%{
+        opacity:1;
+        transform:rotate(0deg)
+    }
+}
+@keyframes box1_Rt{
+    0%{
+        opacity:0;
+        transform:rotate(90deg);
+    }
+    100%{
+        opacity:1;
+        transform:rotate(0deg)
+    }
+}
+@keyframes scale{
+    0%{
+        transform:scale(0)
+    }100%{
+        transform:scale(1)
+    }
+}
+@keyframes translateTop{
+    0%{
+        margin-top:-20px;
+    }100%{
+        margin-top:0;
+     }
+}
+@keyframes translateBottom{
+    0%{
+        margin-top:414px;
+    }100%{
+        margin-top:0px;
+     }
+}
+@keyframes text2{
+    0%{
+        transform:scale(.6);
+        margin-top:-16px;
+    }
+    100%{
+        transform:scale(1);
+        margin-top:0;
+    }
+}
+@keyframes lfToRt{
+    0%{
+        transform:translate(-414px);
+    }100%{
+        transform:translate(0);
+    }
+}
+@keyframes RtTolf{
+    0%{
+        transform:translate(414px);
+    }100%{
+        transform:translate(0);
+    }
+}
+@keyframes btmToTop{
+    0%{
+        transform:translateY(80px);
+    }100%{
+        transform:translateY(0);
+    }
+}
+@keyframes opc{
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+}
+@keyframes opcScale{
+    0%{
+        transform:scale(.8);
+        opacity: 0;
+    }100%{
+        transform:scale(1);
+        opacity: 1;
+    }
+}
+@keyframes bounce{
+    0%{
+        opacity: 0;
+        transform:translateY(-100px);
+    }50%{
+        opacity: 0.5;
+        transform:translateY(40px);
+    }100%{
+        opacity: 1;
+        transform:translateY(0);
+    }
+}
+@keyframes bounce1{
+    0%{
+        opacity: 0;
+        top:-40px;
+        transform:scale(.22);
+    }50%{
+        opacity: 0.5;
+        top:15px;
+        transform:translateY(30px);
+        transform:scale(.66);
+    }100%{
+        opacity: 1;
+        margin-top:0px;
+        transform:translateY(0);
+        transform:scale(1.2);
+    }
+}
+@keyframes scaleBig{
+    0%{
+        transform:scale(0)
+    }
+    50%{
+        transform:scale(1.05)
+    }100%{
+        transform:scale(1)
+    }
+}
+@keyframes scaleBig2{
+    0%{
+        opacity: 0;
+        transform:scale(0)
+    }
+    33%{
+        opacity: 0.33;
+        transform:scale(1.2)
+    }
+    66%{
+        opacity: 0.66;
+        transform:scale(.8)
+    }100%{
+        opacity: 1;
+        transform:scale(1)
+    }
+}
+.scaleBig2{
+    -webkit-animation:scaleBig2 .7s infinite alternate  ease;
+    -moz-animation:scaleBig2 .7s infinite alternate  ease;
+    -ms-animation:scaleBig2 .7s infinite alternate  ease;
+    -o-animation:scaleBig2 .7s infinite alternate  ease;
+    animation:scaleBig2 .7s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.translateBottom{
+    -webkit-animation:translateBottom 1.5s infinite alternate  ease;
+    -moz-animation:translateBottom 1.5s infinite alternate  ease;
+    -ms-animation:translateBottom .1.5s infinite alternate  ease;
+    -o-animation:translateBottom 1.5s infinite alternate  ease;
+    animation:translateBottom 1.5s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.lfToRt{
+    -webkit-animation:lfToRt 4s infinite alternate  ease;
+    -moz-animation:lfToRt 4s infinite alternate  ease;
+    -ms-animation:lfToRt 4s infinite alternate  ease;
+    -o-animation:lfToRt 4s infinite alternate  ease;
+    animation:lfToRt 4s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.RtTolf{
+    -webkit-animation:RtTolf 4s infinite alternate  ease;
+    -moz-animation:RtTolf 4s infinite alternate  ease;
+    -ms-animation:RtTolf 4s infinite alternate  ease;
+    -o-animation:RtTolf 4s infinite alternate  ease;
+    animation:RtTolf 4s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.lfToRt1{
+    -webkit-animation:lfToRt 1s infinite alternate  ease;
+    -moz-animation:lfToRt 1s infinite alternate  ease;
+    -ms-animation:lfToRt 1s infinite alternate  ease;
+    -o-animation:lfToRt 1s infinite alternate  ease;
+    animation:lfToRt 1s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.RtTolf1{
+    -webkit-animation:RtTolf 1s infinite alternate  ease;
+    -moz-animation:RtTolf 1s infinite alternate  ease;
+    -ms-animation:RtTolf 1s infinite alternate  ease;
+    -o-animation:RtTolf 1s infinite alternate  ease;
+    animation:RtTolf 1s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.text>p.opc,.opc{
+    -webkit-animation:opc 1s infinite alternate  ease;
+    -moz-animation:opc 1s infinite alternate  ease;
+    -ms-animation:opc 1s infinite alternate  ease;
+    -o-animation:opc 1s infinite alternate  ease;
+    animation:opc 1s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.opcScale{
+    -webkit-animation:opcScale .4s infinite alternate  ease;
+    -moz-animation:opcScale .4s infinite alternate  ease;
+    -ms-animation:opcScale .4s infinite alternate  ease;
+    -o-animation:opcScale .4s infinite alternate  ease;
+    animation:opcScale .4s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.transformLf{
+    -webkit-animation:box1_lf .6s infinite alternate  ease;
+    -moz-animation:box1_lf .6s infinite alternate  ease;
+    -ms-animation:box1_lf .6s infinite alternate  ease;
+    -o-animation:box1_lf .6s infinite alternate  ease;
+    animation:box1_lf 1s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.transformRt{
+    -webkit-animation:box1_Rt .4s infinite alternate  ease;
+    -moz-animation:box1_Rt .4s infinite alternate  ease;
+    -ms-animation:box1_Rt .4s infinite alternate  ease;
+    -o-animation:box1_Rt .4s infinite alternate  ease;
+    animation:box1_Rt 1s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+/**缩放*/
+.scale{
+    -webkit-animation:scale 1.2s infinite alternate  ease;
+    -moz-animation:scale 1.2s infinite alternate  ease;
+    -ms-animation:scale 1.2s infinite alternate  ease;
+    -o-animation:scale 1.2s infinite alternate  ease;
+    animation:scale 1.2s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.scaleBig{
+    -webkit-animation:scaleBig 1.2s infinite alternate  ease;
+    -moz-animation:scaleBig 1.2s infinite alternate  ease;
+    -ms-animation:scaleBig 1.2s infinite alternate  ease;
+    -o-animation:scaleBig 1.2s infinite alternate  ease;
+    animation:scaleBig 1.2s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.scale_quick{
+    -webkit-animation:scale 1s infinite alternate  ease;
+    -moz-animation:scale 1s infinite alternate  ease;
+    -ms-animation:scale 1s infinite alternate  ease;
+    -o-animation:scale 1s infinite alternate  ease;
+    animation:scale 1s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.translateTop{
+    -webkit-animation:translateTop 1.5s infinite alternate  ease;
+    -moz-animation:translateTop 1.5s infinite alternate  ease;
+    -ms-animation:translateTop 1.5s infinite alternate  ease;
+    -o-animation:translateTop 1.5s infinite alternate  ease;
+    animation:translateTop 1.5s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.text h4.bounce,.bounce{
+    -webkit-animation:bounce .3s infinite alternate  ease;
+    -moz-animation:bounce .3s infinite alternate  ease;
+    -ms-animation:bounce .3s infinite alternate  ease;
+    -o-animation:bounce .3s infinite alternate  ease;
+    animation:bounce .3s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.bounce1{
+    -webkit-animation:bounce1 .5s infinite alternate  ease;
+    -moz-animation:bounce1 .5s infinite alternate  ease;
+    -ms-animation:bounce1 .5s infinite alternate  ease;
+    -o-animation:bounce1 .5s infinite alternate  ease;
+    animation:bounce1 .5s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.shi i.bounce1,.guang i.bounce1{
+    -webkit-animation:bounce1 .4s infinite alternate  ease;
+    -moz-animation:bounce1 .4s infinite alternate  ease;
+    -ms-animation:bounce1 .4s infinite alternate  ease;
+    -o-animation:bounce1 .4s infinite alternate  ease;
+    animation:bounce1 .4s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.zxc_lfToRt{
+    -webkit-animation:lfToRt 4s infinite alternate  ease;
+    -moz-animation:lfToRt 4s infinite alternate  ease;
+    -ms-animation:lfToRt 4s infinite alternate  ease;
+    -o-animation:lfToRt 4s infinite alternate  ease;
+    animation:lfToRt 4s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.btmToTop{
+     -webkit-animation:btmToTop 1s infinite alternate  ease;
+    -moz-animation:btmToTop 1s infinite alternate  ease;
+    -ms-animation:btmToTop 1s infinite alternate  ease;
+    -o-animation:btmToTop 1s infinite alternate  ease;
+    animation:btmToTop 1s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.anim_plane{
+    -webkit-animation:RtTolf 2s infinite alternate  ease;
+    -moz-animation:RtTolf 2s infinite alternate  ease;
+    -ms-animation:RtTolf 2s infinite alternate  ease;
+    -o-animation:RtTolf 2s infinite alternate  ease;
+    animation:RtTolf 2s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}
+.anim_gd{
+    -webkit-animation:RtTolf 2.4s infinite alternate  ease;
+    -moz-animation:RtTolf 2.4s infinite alternate  ease;
+    -ms-animation:RtTolf 2.4s infinite alternate  ease;
+    -o-animation:RtTolf 2.4s infinite alternate  ease;
+    animation:RtTolf 2.4s infinite alternate  ease;
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -ms-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+}

@@ -1,0 +1,44 @@
+<!doctype HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=320,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../js/jquery.ui/themes/base/jquery.ui.all.css" type="text/css">
+		<link rel="stylesheet" href="../sweetAlert/css/example.css">
+		<link rel="stylesheet" href="js/ui.daterangepicker.css" type="text/css" />
+
+		<script src="../js/jquery/jquery-1.8.3.min.js"></script>
+		<script src="../js/jquery.ui/jquery-ui-1.10.3.min.js"></script>
+		<script src="js/moment.js"></script>
+		<script src="js/daterangepicker.jQuery.js"></script>
+		<script src="js/daterangepicker.js"></script>
+  		
+		<title>联级日期</title>
+	</head>
+	<body>
+		<a href="../index.html" class="back">返回</a>
+		<h3>效果图</h3>
+		<div class="examples" style="text-align:center;"><img src="date.png" /></div>
+		<h3>例子</h3>
+		<ul class="examples">
+			<li class="message">
+				<div class="ui">
+					<input type="text" class="input" id="datepicker" />
+				</div>
+<pre>initMyDates.dataPicker("#datepicker",0,function(){});</pre>
+			</li>
+		</ul>
+		<h3></h3>
+
+		<script>
+		$(function(){
+			initMyDates.dataPicker("#datepicker",0,function(){
+
+			});
+		});
+		</script>
+	</body>
+</html>

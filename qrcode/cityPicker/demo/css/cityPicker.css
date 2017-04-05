@@ -1,0 +1,20 @@
+ul,li,p,dl,dt,dd,em{ margin: 0; padding: 0; list-style: none;}
+.hide{ display: none;}
+#cityPicker{ clear: both; margin: 20px;}
+#cityPicker div{ display: inline-block; width: 160px; position: relative; margin-right: 10px;} 
+#province{ margin-right: 10px;}
+#cityPicker div>p{ cursor: pointer; border: 1px solid #ccc; border-radius: 4px; height: 28px; line-height: 28px; position: relative;}
+#cityPicker div i{ display: block; width: 94%; position: absolute; font-style: normal; padding-left: 6%;}
+#cityPicker div ul{ position: absolute; left: 0; top: 29px; border: 1px solid #ccc; border-radius: 4px;
+width: 158px; padding:6px 0;}
+#cityPicker div li{ line-height: 28px; padding: 0 10px; cursor: pointer;}
+#cityPicker div li:hover{ background: #06c; color: #fff;}
+#cityPicker div em{display: inline-block; position: absolute; right: 10px; top: 12px;
+width: 0;
+height: 0;
+margin-left: 2px;
+vertical-align: middle;
+border-top: 4px solid;
+border-right: 4px solid transparent;
+border-left: 4px solid transparent;
+}
