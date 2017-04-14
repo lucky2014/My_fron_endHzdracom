@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="listener-1.0.0-dev.js"></script>
+</head>
+<body>
+<div id="state"></div>
+<script>
+    var dom_state = document.querySelector("#state");
+    var listener =new Listener({
+        frozenTime:6, //6秒内还没有键盘鼠标操作，就为静默状态
+        onStateChange:function(state){
+            console.log(state);
+            if(state=="frozen"){
+                dom_state.innerHTML='当前页面状态为无操作状态';
+            }else if(state=="active"){
+                dom_state.innerHTML='当前页面状态为活动状态';
+            }
+        }
+    });
+    listener.start();  //开始监听
+    //listener.stop(); //停止监听
+</script>
+</body>
+</html>
